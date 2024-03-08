@@ -1,19 +1,16 @@
 <?php
 
+use App\Http\Controllers\TasksController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('tasks.index');
-});
+Route::get('/', 'TasksController@index');
+// Route::get('/tasks', 'TasksController@index');
+// Route::get('/tasks/create', 'TasksController@create');
+// Route::post('/tasks', 'TasksController@store');
+
+Route::get('/', [TasksController::class, 'index']);
+Route::get('/tasks', [TasksController::class, 'index']);
+Route::get('/tasks/create', [TasksController::class, 'create']);
+Route::post('/tasks', [TasksController::class, 'store']);
 
 
-Route::get('/tasks/create', function () {
-    return view('tasks.create');
-});
-
-// Replace the homepage
-// create a task 
-// Display a list of tasks 
-// Mark a task as completed
-// Divide the tasks into completed and uncompleted section
-// Delete  a task permanently
